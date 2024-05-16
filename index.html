@@ -8,35 +8,93 @@
         body, html {
             display: flex;
             justify-content: center;
+            align-items: center; /* Alinhar verticalmente o conteúdo */
             margin: 0;
             height: 100%;
-            font-family:Arial, Helvetica, sans-serif ;
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
             background-color: brown;
         }
-        p{
-            color:aqua
-        }
     </style>
-    
+</head>
 <body>
-    <div id="parentDiv">
-      <p>
-        <span style="color:blueviolet;">Pontos: </span>
-        <span id="scoreEl">0</span>
-    </p>  
-    <canvas></canvas>
+    <div style="position: relative;" id="parentDiv">
+        <p
+         id="scoreContainer"
+          style="
+          position: absolute;
+           z-index: 10;
+            color: blanchedalmond;
+             margin: 0; 
+             left: 10px;
+              top: 10px;
+               display: none;
+               "
+               >
+            <span style="color: black;">Pontos: </span>
+            <span id="scoreEl">0</span>
+        </p>
+        <canvas></canvas>
+        <div 
+        id="startScreen" 
+        style="
+        display: none;
+        position: absolute;
+         top: 0;
+         left: 0; 
+         right: 0;
+         bottom: 0;
+         display: flex;
+         justify-content: center; 
+         align-items: center;
+         background: url('./img/startScreenBackground.png');
+         background-repeat: no-repeat; 
+         background-size: contain;
+         z-index: 20;
+         "
+         >
+            <div style="text-align: center;">
+                <h1 style="color: aliceblue "> Space Invanders</h1>
+                <div
+                 id="startButton" 
+                 style="position: relative; display: inline-block; cursor: pointer;">
+                    <img src="./img/button.png" alt="Start Button" />
+                    <span 
+                    style="
+                    position: absolute;
+                    color: azure;
+                     top: 50%;
+                    left: 50%;
+                     transform: translate(-50%, -50%);
+                        "
+                        >Iniciar</span>
+                </div>
+            </div>
+        </div><!-- Fim startScreen -->
 
-    <div id="startScreen">
-        <div>
-            <h1> Space Invaders</h1>
-           <div id="startButton">
-            <img src="./img/button.png" alt="Start Button" />
-            <span>Iniciar</span>
-           </div>
-
+        <div id="restartScreen"
+        srtyle="
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: url('./img/startScreenBackground.png')
+        z-index: 20;
+        background-size: contain;
+        background-repeat:no-reapeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        "
+        >
+            <div style="text-align: center;">
+                <h1 style="color:aliceblue">Game Over</h1>
+            </div id= "restartButton">
+            <img src="./img/button.png" alt="Restart Button"  />
+            <span>Reiniciar</span>
+            </div>
         </div>
-    </div><!-- Fim startScreen-->
     </div>
 </body>
 </html>
