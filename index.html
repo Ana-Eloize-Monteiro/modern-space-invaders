@@ -22,14 +22,14 @@
         <p
          id="scoreContainer"
           style="
-          position: absolute;
-           z-index: 10;
-            color: blanchedalmond;
-             margin: 0; 
-             left: 10px;
-              top: 10px;
-               display: none;
-               "
+        position: absolute;
+         z-index: 10;
+        color: blanchedalmond;
+        margin: 0; 
+        left: 10px;
+        top: 10px;
+     display: none;
+            "
                >
             <span style="color: black;">Pontos: </span>
             <span id="scoreEl">0</span>
@@ -90,11 +90,34 @@
         >
             <div style="text-align: center;">
                 <h1 style="color:aliceblue">Game Over</h1>
-            </div id= "restartButton">
+            </div id= "restartButton"
+            style= "position:relative; display">
             <img src="./img/button.png" alt="Restart Button"  />
-            <span>Reiniciar</span>
+            <span
+            style="
+            position: absolute;
+            color: aliceblue;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, _50%);"
+            >Reiniciar</span>
             </div>
         </div>
     </div>
-</body>
-</html>
+    
+     <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+    integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    ></script>
+
+    </body>
+    </html>
