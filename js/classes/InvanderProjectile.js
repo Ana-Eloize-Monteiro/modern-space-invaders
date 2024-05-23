@@ -11,7 +11,4 @@ class InvanderProjectile {
         c.fillRect(this.position.x, this.position.y, this.width, this.height);
 }
 
-    update(){
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-    }}
+}

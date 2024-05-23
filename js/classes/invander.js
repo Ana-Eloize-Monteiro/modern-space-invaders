@@ -36,6 +36,25 @@ class Invader {
      }
 
         }
+        
+
+        shoot(InvanderProjectiles){
+            Audio.enemyShoot.play();
+            InvanderProjectiles.push(
+                new InvanderProjectile({
+                    position: {
+                        X: this.position.X + this.width / 2,
+                        Y: this.position.Y + this.height / 2
+                    },
+                    velocity: {
+                        X: 0,
+                        Y: 5
+
+                    }
+                })
+            )
+
+        }
       
 }
 
