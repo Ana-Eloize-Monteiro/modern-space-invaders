@@ -22,9 +22,18 @@ class Grid{
                         i: i * 30,
                         j:j * 30
                     }
-
                     }));
             }
         }
     }
+
+    update() {
+        this.position.X = this.velocity.X
+        this.position.Y = this.velocity.Y
+        this.velocity.Y= 0;
+        
+        if(this.position.X + this.width>= canvas.width || this.position.X <= 0){
+            this.velocity.X = -this.velocity.X * 1.15;
+            this.velocity.Y = 30;
+        }
 }
