@@ -27,4 +27,15 @@ class Invader {
             this.height
             );
     }
+
+    update() {
+        if (this.image){
+            this.draw();
+            this.position.X += this.velocity.X;
+            this.position.Y += this.velocity.Y;
+     }
+
+        }
+      
 }
+
