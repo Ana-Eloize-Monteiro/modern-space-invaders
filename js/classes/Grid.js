@@ -36,4 +36,5 @@ class Grid{
             this.velocity.X = -this.velocity.X * 1.15;
             this.velocity.Y = 30;
         }
+    }
 }
