@@ -13,4 +13,10 @@ draw(){
     c.fill();
     c.closePath();
 }
+
+update(){
+    this.draw();
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+}
 }
