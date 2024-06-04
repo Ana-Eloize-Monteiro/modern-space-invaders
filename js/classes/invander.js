@@ -28,7 +28,7 @@ class Invader {
             );
     }
 
-    update() {
+    update({velocity}) {
         if (this.image){
             this.draw();
             this.position.X += this.velocity.X;
@@ -36,6 +36,7 @@ class Invader {
      }
 
         }
+        
         
 
         shoot(InvanderProjectiles){
