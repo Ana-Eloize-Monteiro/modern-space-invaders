@@ -88,3 +88,18 @@ canvas.height = 576;
     );
        }
     }
+
+    function endGame(){
+        audio.gameOver.play();
+
+        setTimeout(() => {
+            game.active = false;
+            document.querySelector("#restartScreen").style.display = "flex";
+        }, 2000);
+
+        createParticles({
+            object: player,
+            color: "white",
+            fades: true
+        });
+    }
