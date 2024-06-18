@@ -206,7 +206,156 @@ canvas.height = 576;
                     endGame();
                 }
           });
-        
+          for (let j = bombs. length - 1; j >= 0; j -- ) {
+            const bomb = bombs[j];
+            
+            if (
+            Math.hypot(
+            projectile.position.x - bomb.position.x,
+            projectile.position.y - bomb.position.y
+            )<
+            projectile.radius + bomb.radius &&
+            ! bomb.active
+        ){
+            
+            projectiles.splice(i, 1);
+            bomb.explode();
+            
+            }
+        }
+            
+            for (let j = powerUps.length - 1; j >= 0; j -- ) {
+            const powerUp = powerUps[j];
+            
+            if (
+            Math.hypot(
+            projectile.position.x - powerUp.position.x,
+            projectile.position.y - powerUp.position.y
+            ) <
+            projectile.radius + powerUp.radius
+            ) {
+            projectiles.splice(i, 1);
+            powerUps.splice(j, 1);
+            player.powerUp = "Metralhadora";
+            audio.bonus.play();
+            
+            setTimeout(() => {
+            player.powerUp = null;
+            }, 5000);
+        }
+            
+            }
+            if (projectile.position.y + particles.radius <= 0) {
+                projectiles.splice(i, 1);
+                } else {
+                projectile.update();
+                }
+            
+ 
+                grids.forEach((grid, gridIndex) => {
+                grid.update();
+                if (frames % 100 === 0 && grid.invaders.length > 0) {
+                grid.invaders[Math. floor(Math. random() * grid.invaders. length) ]. shoot(
+                invaderProjectiles
+                );
+            }
+                
+                for (let i = grid.invaders.length - 1; i >= 0; i -- ) {
+                const invader = grid.invaders[i];
+                invader.update({ velocity: grid.velocity });
+                
+                for (let j = bombs.length - 1; j >= 0; j -- ) {
+                const bomb = bombs[j];
+                const invaderRadius = 15;
+                
+                if (
+                Math.hypot(
+                invader.position.x - bomb.position.x,
+                invader.position.y - bomb.position.y
+                ) <
+                invaderRadius + bomb.radius &&
+                bomb.active
+            ) {
+                score += 50;
+                scoreEl.innerHTML = score;
+                
+                grid.invaders.splice(i, 1);
+                createScoreLabel({
+                object: invader,
+                score: 50
+                });
+                
+                createParticles({
+                object: invader,
+                fades: true
+                });
+            }
+        }
+                
+            projectiles.forEach((projectile, j) => {
+                if (
+                projectile.position.y - projectile.radius <=
+                invader.position.y + invader.height &&
+                projectile.position.x + projectile.radius >= invader.position.x &&
+                projectile. position.x - projectile.radius <=
+                invader.position.x + invader.width &&
+                projectile.position.y + projectile.radius >= invader.position.y
+                ){
+                
+                setTimeout(() => {
+                const invaderFound = grid.invaders.find(
+                (invader2) => invader2 === invader
+                );
+                const projectileFound = projectiles.find(
+                (projectile2) => projectile2 === projectile
+                
+                );
+                
+                if (invaderFound && projectileFound) {
+                    score += 100;
+                    scoreEl. innerHTML = score;
+
+                    createScoreLabel({
+                        object: invader,
+                        fades: true
+                    });
+                    createParticles({
+                        object: invader,
+                        fades: true
+                    });
+                    audio.explode.play();
+                    grid.invaders.splice(i, 1);
+                     projectiles.splice(j, 1);
+
+            if (grid.invaders. length > 0) {
+             const firstInvader = grid.invaders[0];
+             const lastInvader = grid.invaders[grid.invaders. length - 1];
+
+grid.width =
+lastInvader. position.x
+firstInvader.position.x
+lastInvader.width;
+
+grid.position.x = firstInvader.position.x;
+} else {
+grids.splice(gridIndex, 1);
+}
+                }
+            }, 0);
+        }
+    });
+
+if (    
+    rectangularCollision({
+        rectangle1: invader,
+        rectangle2: player
+    })&&
+    !game.over
+)
+    endGame();
+}
+});
+ 
             
         
          
