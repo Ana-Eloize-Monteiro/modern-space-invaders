@@ -355,6 +355,51 @@ if (
     endGame();
 }
 });
+if(keys.ArrowLeft.pressed && player.position.x >= 0) {
+    player.velocity.x = -7;
+    player.rotation.x = -0.15;  //Pode alterar a velocidade do jogo, desafio
+    } else if(
+      keys.ArrowRight.pressed &&
+      player.position.x + player.width < canvas.width
+    ) {
+      player.velocity.x = 7;
+      player.rotation.x = 0.15;
+    } else {
+      player.velocity.x = 0;
+      player.rotation.x = 0;  // O PLAYER ESTA PARADO
+    }
+
+    if(frames % randomInterval === 0) {
+      spawnBuffer = spawnBuffer < 0 ? 100: spawnBuffer; // É uma verificação ternária. obs:Que beijão entre David e Silas 16:25
+      grids.push(new Grid());
+      randomInterval = Math.floor(Math.random() * 500 + spawnBuffer);
+      frames = 0;
+      spawnBuffer -= 100;
+
+    }
+     if(
+      keys.Space.pressed &&
+      player.powerUp === "Metralhadora" &&
+      frames % 2 === 0 &&
+      !game.over
+     ) {
+      if(frames % 6 === 0) audio.shoot.play();
+      projectiles.push(
+        new Projectile({
+          position: {
+            x: player.position.x + player.width / 2,
+            y: player.position.y 
+          },
+          velocity: {
+            x: 0,
+            y: -10
+          },
+          color: "yellow"
+        })
+      )
+     }
+
+     frames++;
  
             
         
